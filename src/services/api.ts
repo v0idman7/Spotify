@@ -106,6 +106,28 @@ export const getPlaylist = async (id: string) => {
   }
 };
 
+export const getSearch = async (search: string) => {
+  try {
+    const response = await api({
+      method: "GET",
+      url: `search`,
+      headers: {
+        Authorization: getAuthorization(),
+      },
+      params: {
+        q: `artist:${search} name:${search}`,
+        type: "album,artist,track",
+      },
+    });
+    return response.data;
+  } catch (error: any) {
+    if (error.response.status === 400 || error.response.status === 401)
+      window.location.href = getAuthorizeUrl();
+
+    throw new Error(error.response.message);
+  }
+};
+
 export const getNewReleases = async () => {
   try {
     const response = await api({

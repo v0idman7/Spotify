@@ -10,6 +10,7 @@ import FavoriteAlbums from "../FavoriteAlbums/FavoriteAlbums";
 import MainPage from "../MainPage/MainPage";
 import Player from "../Player/Player";
 import AlbumPage from "../AlbumPage/AlbumPage";
+import PlaylistPage from "../PlaylistPage/PlaylistPage";
 
 function App() {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ function App() {
         <Route path="/Tracks" element={<FavoriteTracks />} />
         <Route path="/Albums" element={<FavoriteAlbums />} />
         <Route path="/Album/:id" element={<AlbumPage />} />
-        <Route path="/Playlist/:id" element={<AlbumPage playlist />} />
+        <Route path="/Playlist/:id" element={<PlaylistPage />} />
       </Route>
     </Routes>
   );

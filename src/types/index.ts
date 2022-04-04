@@ -157,6 +157,38 @@ export type PlaylistsType = {
   uri: string;
 };
 
+export type OnePlaylistsType = {
+  collaborative: boolean;
+  description: string;
+  external_urls: {
+    spotify: string;
+  };
+  href: string;
+  id: string;
+  images: Array<ImageType>;
+  name: string;
+  owner: ArtistType;
+  primary_color: string | null;
+  public: string | null;
+  snapshot_id: string;
+  tracks: {
+    href: string;
+    items: Array<{
+      added_at: string;
+      added_by: ArtistType;
+      is_local: boolean;
+      track: TrackType;
+    }>;
+    limit: number;
+    next: string | null;
+    offset: string;
+    previos: string | null;
+    total: number;
+  };
+  type: string;
+  uri: string;
+};
+
 export type ListOfPlaylistsType = {
   message: string;
   playlists: {

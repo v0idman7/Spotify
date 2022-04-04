@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getAlbum, getPlaylist } from "../../services/api";
+import { getAlbum } from "../../services/api";
 import { AlbumType } from "../../types";
 import "./AlbumPage.scss";
 
-const AlbumPage = ({ playlist }: { playlist?: boolean }) => {
+const AlbumPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -16,16 +16,8 @@ const AlbumPage = ({ playlist }: { playlist?: boolean }) => {
     setAlbum(currentAlbum);
   };
 
-  const fetchPlaylist = async (id: string) => {
-    const currentPlaylist = await getPlaylist(id);
-    setAlbum(currentPlaylist);
-  };
-
   useEffect(() => {
     if (id) {
-      if (playlist) {
-        fetchPlaylist(id);
-      }
       fetchAlbum(id);
     } else navigate("/");
   }, []);

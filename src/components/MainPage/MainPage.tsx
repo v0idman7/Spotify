@@ -3,6 +3,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import SearchPanel from "../SearchPanel/SearchPanel";
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const MainPage = () => {
 
   return (
     <div className="mainPage">
+      <SearchPanel />
       {playlists && (
         <div className="mainPage__section">
           <h2 className="mainPage__sectionName">{playlists.message}</h2>
