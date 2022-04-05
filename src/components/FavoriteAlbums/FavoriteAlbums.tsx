@@ -14,29 +14,28 @@ const FavoriteAlbums = () => {
 
   const { favoriteAlbums } = useTypedSelector((state) => state.favorite);
 
+  if (!favoriteAlbums) return null;
   return (
-    favoriteAlbums && (
-      <div className="mainPage__section">
-        <h2 className="mainPage__sectionName">Любимые Альбомы</h2>
-        <ul className="mainPage__list albumsList">
-          {favoriteAlbums.items.map((item) => (
-            <li className="albumsList__item albumItem" key={item.album.id}>
-              <Link className="albumItem__link" to={`/Album/${item.album.id}`}>
-                <img
-                  className="albumItem__poster"
-                  src={item.album.images[0].url}
-                  alt="poster"
-                />
-                <h3 className="albumItem__name">{item.album.name}</h3>
-                <p className="albumItem__description">{`${item.album.artists
-                  .map((one) => one.name)
-                  .join(", ")}`}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
+    <div className="mainPage__section">
+      <h2 className="mainPage__sectionName">Любимые Альбомы</h2>
+      <ul className="mainPage__list albumsList">
+        {favoriteAlbums.items.map((item) => (
+          <li className="albumsList__item albumItem" key={item.album.id}>
+            <Link className="albumItem__link" to={`/Album/${item.album.id}`}>
+              <img
+                className="albumItem__poster"
+                src={item.album.images[0].url}
+                alt="poster"
+              />
+              <h3 className="albumItem__name">{item.album.name}</h3>
+              <p className="albumItem__description">{`${item.album.artists
+                .map((one) => one.name)
+                .join(", ")}`}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

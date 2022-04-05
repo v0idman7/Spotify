@@ -18,30 +18,29 @@ const Player = () => {
     if (currentTrack! > 0) dispatch({ type: "PREVIOS_TRACK" });
   }, [currentTrack]);
 
+  if (!playlist) return null;
   return (
-    playlist && (
-      <div className="miniPlayer">
-        <AudioPlayer
-          src={playlist[currentTrack!].preview_url}
-          showSkipControls
-          onClickNext={handleNextClick}
-          onClickPrevious={handlePreviousClick}
-          autoPlayAfterSrcChange={false}
-          header={
-            <div className="playerHeader">
-              <span className="playerHeader__name">
-                {playlist[currentTrack!].name}
-              </span>
-              <span className="playerHeader__artist">
-                {playlist[currentTrack!].artists
-                  .map((one) => one.name)
-                  .join(", ")}
-              </span>
-            </div>
-          }
-        />
-      </div>
-    )
+    <div className="miniPlayer">
+      <AudioPlayer
+        src={playlist[currentTrack!].preview_url}
+        showSkipControls
+        onClickNext={handleNextClick}
+        onClickPrevious={handlePreviousClick}
+        autoPlayAfterSrcChange={false}
+        header={
+          <div className="playerHeader">
+            <span className="playerHeader__name">
+              {playlist[currentTrack!].name}
+            </span>
+            <span className="playerHeader__artist">
+              {playlist[currentTrack!].artists
+                .map((one) => one.name)
+                .join(", ")}
+            </span>
+          </div>
+        }
+      />
+    </div>
   );
 };
 
