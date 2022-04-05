@@ -22,11 +22,6 @@ const Header = () => {
               Любимые Альбомы
             </Link>
           </li>
-          <li className="header__menuItem">
-            <Link className="header__menuLink" to="/Profile">
-              Мой Профиль
-            </Link>
-          </li>
         </ul>
       </div>
       <Outlet />

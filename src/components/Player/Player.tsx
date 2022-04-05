@@ -1,21 +1,22 @@
+import { useCallback } from "react";
 import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/src/styles.scss";
 import { useDispatch } from "react-redux";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 
+import "react-h5-audio-player/src/styles.scss";
 import "./Player.scss";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const Player = () => {
   const dispatch = useDispatch();
   const { currentTrack, playlist } = useTypedSelector((state) => state.player);
 
-  const handleNextClick = () => {
+  const handleNextClick = useCallback(() => {
     if (currentTrack! < playlist!.length - 1) dispatch({ type: "NEXT_TRACK" });
-  };
+  }, [currentTrack, playlist]);
 
-  const handlePreviousClick = () => {
+  const handlePreviousClick = useCallback(() => {
     if (currentTrack! > 0) dispatch({ type: "PREVIOS_TRACK" });
-  };
+  }, [currentTrack]);
 
   return (
     playlist && (

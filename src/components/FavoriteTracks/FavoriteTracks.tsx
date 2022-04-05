@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
+
 import "./FavoriteTracks.scss";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const FavoriteTracks = () => {
   const dispatch = useDispatch();
@@ -12,15 +13,18 @@ const FavoriteTracks = () => {
 
   const { favoriteTracks } = useTypedSelector((state) => state.favorite);
 
-  const handleClick = (num: number) => {
-    dispatch({
-      type: "PLAY_TRACK",
-      payload: {
-        track: num,
-        playlist: favoriteTracks!.items.map((one) => one.track),
-      },
-    });
-  };
+  const handleClick = useCallback(
+    (num: number) => {
+      dispatch({
+        type: "PLAY_TRACK",
+        payload: {
+          track: num,
+          playlist: favoriteTracks!.items.map((one) => one.track),
+        },
+      });
+    },
+    [favoriteTracks]
+  );
 
   return (
     favoriteTracks && (

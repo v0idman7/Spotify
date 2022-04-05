@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+
+import "./PlaylistPage.scss";
 import { getPlaylist } from "../../services/api";
 import { OnePlaylistsType } from "../../types";
-import "./PlaylistPage.scss";
 
 const PlaylistPage = () => {
   const dispatch = useDispatch();
@@ -22,15 +23,18 @@ const PlaylistPage = () => {
     } else navigate("/");
   }, []);
 
-  const handleClick = (num: number) => {
-    dispatch({
-      type: "PLAY_TRACK",
-      payload: {
-        track: num,
-        playlist: playlist!.tracks.items.map((one) => one.track),
-      },
-    });
-  };
+  const handleClick = useCallback(
+    (num: number) => {
+      dispatch({
+        type: "PLAY_TRACK",
+        payload: {
+          track: num,
+          playlist: playlist!.tracks.items.map((one) => one.track),
+        },
+      });
+    },
+    [playlist]
+  );
 
   return (
     playlist && (

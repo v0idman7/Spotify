@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
+
 import "./FavoriteAlbums.scss";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const FavoriteAlbums = () => {
   const dispatch = useDispatch();

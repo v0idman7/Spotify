@@ -1,8 +1,8 @@
+import { useEffect } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+
 import "./App.scss";
 import { getAuthorizeUrl, getDataFromHash } from "../../services/auth";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
 import Header from "../Header/Header";
 import FavoriteTracks from "../FavoriteTracks/FavoriteTracks";
@@ -22,6 +22,8 @@ function App() {
       `${data.token_type} ${data.access_token}`
     );
   }
+  const { fetchUsers } = useActions();
+
   useEffect(() => {
     if (!localStorage.getItem("Authorization")) {
       window.location.href = getAuthorizeUrl();
@@ -30,10 +32,6 @@ function App() {
       fetchUsers();
     }
   }, []);
-
-  const user = useTypedSelector((state) => state.user);
-  const { fetchUsers } = useActions();
-  console.log(user);
 
   return (
     <Routes>

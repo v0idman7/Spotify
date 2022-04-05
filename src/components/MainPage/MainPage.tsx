@@ -1,8 +1,9 @@
-import "./MainPage.scss";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+
+import "./MainPage.scss";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 import SearchPanel from "../SearchPanel/SearchPanel";
 
 const MainPage = () => {

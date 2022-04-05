@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+
+import "./SearchPanel.scss";
 import useDebounce from "../../hooks/useDebounce";
 import { getSearch } from "../../services/api";
-import "./SearchPanel.scss";
 
 const SearchPanel = () => {
   const [search, setSearch] = useState("");

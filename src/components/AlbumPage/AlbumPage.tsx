@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+
+import "./AlbumPage.scss";
 import { getAlbum } from "../../services/api";
 import { AlbumType } from "../../types";
-import "./AlbumPage.scss";
 
 const AlbumPage = () => {
   const dispatch = useDispatch();
@@ -22,15 +23,18 @@ const AlbumPage = () => {
     } else navigate("/");
   }, []);
 
-  const handleClick = (num: number) => {
-    dispatch({
-      type: "PLAY_TRACK",
-      payload: {
-        track: num,
-        playlist: album!.tracks.items,
-      },
-    });
-  };
+  const handleClick = useCallback(
+    (num: number) => {
+      dispatch({
+        type: "PLAY_TRACK",
+        payload: {
+          track: num,
+          playlist: album!.tracks.items,
+        },
+      });
+    },
+    [album]
+  );
 
   return (
     album && (

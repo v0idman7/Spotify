@@ -115,7 +115,7 @@ export const getSearch = async (search: string) => {
         Authorization: getAuthorization(),
       },
       params: {
-        q: `artist:${search} name:${search}`,
+        q: `name:${search}`,
         type: "album,artist,track",
       },
     });
@@ -177,7 +177,6 @@ export const getRecommendations = async () => {
     });
 
     const newReleases = response.data;
-    console.log(newReleases);
     return newReleases;
   } catch (error: any) {
     throw new Error(error.response.message);

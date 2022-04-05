@@ -1,4 +1,5 @@
 import { Dispatch } from "react";
+
 import { getUserProfile } from "../../services/api";
 import { UserAction, UserActionTypes } from "../../types/user";
 
