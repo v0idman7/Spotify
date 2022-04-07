@@ -12,11 +12,11 @@ const Player = () => {
 
   const handleNextClick = useCallback(() => {
     if (currentTrack! < playlist!.length - 1) dispatch({ type: "NEXT_TRACK" });
-  }, [currentTrack, playlist]);
+  }, [currentTrack, dispatch, playlist]);
 
   const handlePreviousClick = useCallback(() => {
     if (currentTrack! > 0) dispatch({ type: "PREVIOS_TRACK" });
-  }, [currentTrack]);
+  }, [currentTrack, dispatch]);
 
   if (!playlist) return null;
   return (

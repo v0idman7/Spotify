@@ -31,7 +31,7 @@ function App() {
       navigate("/");
       fetchUsers();
     }
-  }, []);
+  }, [fetchUsers, hash, navigate]);
 
   return (
     <Routes>

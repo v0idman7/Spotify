@@ -10,8 +10,8 @@ const MainPage = () => {
   const dispatch = useDispatch();
   const { albums, playlists } = useTypedSelector((state) => state.music);
   useEffect(() => {
-    if (!albums || !playlists) dispatch({ type: "LOAD_DATA" });
-  }, []);
+    if (!albums && !playlists) dispatch({ type: "LOAD_DATA" });
+  }, [albums, dispatch, playlists]);
 
   return (
     <div className="mainPage">
