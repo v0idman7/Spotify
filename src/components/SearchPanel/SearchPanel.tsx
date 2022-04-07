@@ -10,7 +10,7 @@ const SearchPanel = () => {
   const debouncedSearch = useDebounce(search, 1000);
 
   const fetchSearch = async (search: string) => {
-    const items = await getSearch(search);
+    await getSearch(search);
   };
 
   useEffect(() => {

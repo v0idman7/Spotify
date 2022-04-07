@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -21,6 +21,7 @@ const PlaylistPage = () => {
     if (id) {
       fetchPlaylist(id);
     } else navigate("/");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClick = (num: number) => {
