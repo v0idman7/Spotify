@@ -25,7 +25,7 @@ export const getAuthorizeUrl = () => {
   url += "response_type=token";
   url += "&client_id=" + client_id;
   url += "&scope=" + scope.join("+");
-  url += "&redirect_uri=http://localhost:3000";
+  url += "&redirect_uri=https://spotify-clone-777.netlify.app/";
   return url;
 };
 
